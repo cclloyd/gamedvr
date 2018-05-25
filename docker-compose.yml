@@ -1,7 +1,7 @@
 version: '3.5'
 
 services:
-    gitlab:
+    gamedvr:
         build: ./hosting
         command: ["nginx"]
         restart: always
@@ -10,6 +10,22 @@ services:
          # - gamedvr:/app/gamedvr/files
         ports:
           - "80:80"
+    gitlab:
+      image: 'gitlab/gitlab-ce:latest'
+      restart: always
+      hostname: 'git.cclloyd.com'
+      environment:
+        GITLAB_OMNIBUS_CONFIG: |
+          external_url 'https://git.cclloyd.com'
+          # Add any other gitlab.rb configuration here, each on its own line
+      ports:
+        - '80:80'
+        - '443:443'
+        - '22:22'
+      volumes:
+        - '/srv/gitlab/config:/etc/gitlab'
+        - '/srv/gitlab/logs:/var/log/gitlab'
+        - '/srv/gitlab/data:/var/opt/gitlab'
 
 volumes:
-  gamedvr:
+  git_repos:
