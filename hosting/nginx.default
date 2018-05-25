@@ -33,6 +33,11 @@ server {
     location / {
         root        /app/gamedvr;
         index       index.html;
+        autoindex   on;
+        add_before_body /.theme/header.html;
+        add_after_body /.theme/footer.html;
+
+        autoindex_exact_size off;
     }
 
 }
