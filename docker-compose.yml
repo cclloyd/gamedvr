@@ -8,7 +8,7 @@ services:
         volumes:
           - gamedvr:/app/gamedvr
         ports:
-          - "5001:5001"
+          - "80:80"
 
 volumes:
   gamedvr:
