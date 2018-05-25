@@ -6,7 +6,8 @@ services:
         command: ["nginx"]
         restart: always
         volumes:
-          - gamedvr:/app/gamedvr
+          - ./hosting/files:/app/gamedvr
+         # - gamedvr:/app/gamedvr/files
         ports:
           - "80:80"
 
