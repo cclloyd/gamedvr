@@ -1,0 +1,38 @@
+#server {
+#  listen 80 default_server;
+#  listen [::]:80 default_server ipv6only=on;
+#
+##  listen 443 default ssl;
+##  ssl_certificate /etc/nginx/certs/server.crt;
+##  ssl_certificate_key /etc/nginx/certs/server.key;
+#
+#  root /var/www/;
+#  index index.html index.htm;
+#
+#  server_name _;
+#
+#  location / {
+#    try_files $uri $uri/ =404;
+#  }
+#
+#  location /stats/nginx {
+#    stub_status on;
+#  }
+#}
+
+server {
+    listen *:80;
+
+    server_name             dvr.cclloyd.com;
+
+    index                   index.html;
+
+    access_log              /dev/stdout upstreamlog;
+    error_log               /dev/stderr debug;
+
+    location / {
+        root        /app/gamedvr;
+        index       index.html;
+    }
+
+}

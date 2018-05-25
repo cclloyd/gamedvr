@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+    gitlab:
+        build: ./hosting
+        command: ["nginx"]
+        restart: always
+        volumes:
+          - gamedvr:/app/gamedvr
+        ports:
+          - "5001:5001"
+
+volumes:
+  gamedvr:
